@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 project(slgj C)
 set(CMAKE_C_STANDARD 99)
 
+option(BUILD_S7_REPL "Whether to build the S7 REPL executable" OFF)
+
 # the `pkg_check_modules` function is created with this call
 find_package(PkgConfig REQUIRED)
 
@@ -69,3 +71,9 @@ endif ()
 # Setting ASSETS_PATH
 target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="./assets/")
 target_compile_definitions(${PROJECT_NAME} PUBLIC SCRIPTS_PATH="./scripts/")
+
+# Optional S7 REPL executable
+if (${BUILD_S7_REPL})
+  add_executable(s7 "sources/s7/s7.c")
+  target_compile_definitions(s7 PRIVATE "-DWITH_MAIN=1")
+endif (${BUILD_S7_REPL})
