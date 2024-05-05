@@ -14,7 +14,7 @@ Vector2 s7_vector2(s7_pointer value) {
     v.x = s7_float_vector_ref(value, 0);
   }
   if (length >= 2) {
-    v.y = s7_float_vector_ref(value, 0);
+    v.y = s7_float_vector_ref(value, 1);
   }
   return v;
 }
