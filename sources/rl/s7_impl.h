@@ -7,7 +7,7 @@
 #define S7_FUNCTION_IMPL_void(name, c_func) \
 s7_pointer name(s7_scheme *s7, s7_pointer args) { \
   c_func(); \
-  return NULL; \
+  return s7_nil(s7); \
 }
 
 #define S7_FUNCTION_IMPL_bool(name, c_func) \
